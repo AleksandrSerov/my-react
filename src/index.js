@@ -108,7 +108,6 @@ function performUnitOfWork(fiber) {
     } else {
       prevSibling.sibling = newFiber;
     }
-
     prevSibling = newFiber;
     index++;
   }
