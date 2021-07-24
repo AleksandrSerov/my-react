@@ -89,16 +89,16 @@ function performUnitOfWork(fiber) {
     fiber.parent.dom.appendChild(fiber.dom);
   }
 
-  const elements = fiber.props.children;
+  const children = fiber.props.children;
   let index = 0;
   let prevSibling = null;
 
-  while (index < elements.length) {
-    const element = elements[index];
+  while (index < children.length) {
+    const child = children[index];
 
     const newFiber = {
-      type: element.type,
-      props: element.props,
+      type: child.type,
+      props: child.props,
       parent: fiber,
       dom: null,
     };
