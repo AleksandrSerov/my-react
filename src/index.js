@@ -80,6 +80,26 @@ function performUnitOfWork(fiber) {
       parent: fiber,
       dom: null,
     }
+
+    if (index === 0) {
+      fiber.child = newFiber
+    } else {
+      prevSibling.sibling = newFiber
+    }
+​
+    prevSibling = newFiber
+    index++
+
+    if (fiber.child) {
+      return fiber.child
+    }
+    let nextFiber = fiber
+    while (nextFiber) {
+      if (nextFiber.sibling) {
+        return nextFiber.sibling
+      }
+      nextFiber = nextFiber.parent
+    }
   }
 }
 
